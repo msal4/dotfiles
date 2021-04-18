@@ -1,0 +1,133 @@
+" <--------------------->
+" @ 	Setup Plug 	@
+" <--------------------->
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+" <--------------------->
+" @ 	  Plugins 	@
+" <--------------------->
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+Plug 'morhetz/gruvbox'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
+
+" <--------------------->
+" @    	  Config 	@
+" <--------------------->
+
+let mapleader=" " " Use space as leader key
+set backspace=indent,eol,start " Makes the backspace behave like in other text editing programs
+set autoindent " Auto indent when adding new lines
+set number " Show line numbers
+set encoding=utf-8
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2 " Give more space for displaying messages.
+set updatetime=300 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
+set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Go
+" Disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+" Don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+
+" <----------------------------->
+" @	Syntax Highlighting 	@
+" <----------------------------->
+
+syntax on
+
+colorscheme gruvbox
+
+" Go
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+
+autocmd ColorScheme * highlight CocErrorFloat guifg=#ffffff
+autocmd ColorScheme * highlight CocInfoFloat guifg=#ffffff
+autocmd ColorScheme * highlight CocWarningFloat guifg=#ffffff
+autocmd ColorScheme * highlight SignColumn guibg=#adadad
+
+
+" <--------------------->
+" @    	 Mappings 	@
+" <--------------------->
+
+" Esc
+imap fd <ESC>
+
+" Window
+nnoremap <leader>w <C-w>
+
+" Vimrc
+nnoremap <leader>ev :vsp $MYVIMRC <CR>
+nnoremap <leader>sv :source $MYVIMRC <CR>
+
+" Buffer
+nnoremap <leader>bn :bn <CR>
+nnoremap <leader>bp :bp <CR>
+nnoremap <leader>bd :bd <CR>
+nnoremap <leader>ba :ba <CR>
+nnoremap <leader>ls :ls <CR>
+

@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/Users/msal/dev/learn-go/maths'
+let g:netrw_dirhist_3='/private/var/folders/yw/d45c42gj3qjf_rjd6x5ksyg80000gn/T'
+let g:netrw_dirhist_2='/private/var/folders/yw/d45c42gj3qjf_rjd6x5ksyg80000gn/T/vim-gocbb384837e6b2c15438fca06eb5ec0968a8bd902c02a1c6c19b17c942bfead89'
+let g:netrw_dirhist_1='/Users/msal/dev/learn-go/maths'
