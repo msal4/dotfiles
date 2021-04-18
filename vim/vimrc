@@ -41,6 +41,10 @@ set nowritebackup
 set cmdheight=2 " Give more space for displaying messages.
 set updatetime=300 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
+set nowrap
+" Improves horizontal scrolling
+set sidescroll=5
+set listchars+=precedes:<,extends:>
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
