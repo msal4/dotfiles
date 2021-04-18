@@ -21,6 +21,8 @@ Plug 'morhetz/gruvbox'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'tpope/vim-vinegar'
+
 call plug#end()
 
 
