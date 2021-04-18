@@ -2,7 +2,7 @@
 
 - Clone into home
 ```bash
-git clone https://github.com/msal4/dotfiles.git
+git clone https://github.com/msal4/dotfiles.git $HOME/dotfiles
 ```
 
 - Symlink the needed config
