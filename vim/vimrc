@@ -23,6 +23,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'tpope/vim-vinegar'
 
+Plug 'OmniSharp/omnisharp-vim'
+
 call plug#end()
 
 
@@ -42,6 +44,10 @@ set cmdheight=2 " Give more space for displaying messages.
 set updatetime=300 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set nowrap
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 " Improves horizontal scrolling
 set sidescroll=5
 set listchars+=precedes:<,extends:>
