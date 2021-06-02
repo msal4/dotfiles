@@ -144,3 +144,8 @@ nnoremap <leader>bd :bd <CR>
 nnoremap <leader>ba :ba <CR>
 nnoremap <leader>ls :ls <CR>
 
+" Go
+nnoremap <leader>gr :GoRun <CR>
+nnoremap <leader>gt :GoTest! <CR>
+nnoremap <leader>gta :GoTest! ./... <CR>
+
