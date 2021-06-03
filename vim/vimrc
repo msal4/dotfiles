@@ -25,6 +25,9 @@ Plug 'tpope/vim-vinegar'
 
 Plug 'OmniSharp/omnisharp-vim'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 
@@ -149,3 +152,5 @@ nnoremap <leader>gr :GoRun <CR>
 nnoremap <leader>gt :GoTest! <CR>
 nnoremap <leader>gta :GoTest! ./... <CR>
 
+" fzf
+nnoremap <leader>p :Files <CR>
