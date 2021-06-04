@@ -24,6 +24,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-vinegar'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 Plug 'junegunn/fzf.vim'
 
 call plug#end()
@@ -98,7 +99,6 @@ let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 " Don't jump to errors after metalinter is invoked
 let g:go_jump_to_error = 0
-
 
 " <----------------------------->
 " @     Syntax Highlighting     @
