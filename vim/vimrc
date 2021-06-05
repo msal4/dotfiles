@@ -93,12 +93,18 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+
 " Go
 " Disable all linters as that is taken care of by coc.nvim
 let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 " Don't jump to errors after metalinter is invoked
 let g:go_jump_to_error = 0
+
 
 " <----------------------------->
 " @     Syntax Highlighting     @
