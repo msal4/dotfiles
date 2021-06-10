@@ -1,29 +1,37 @@
 {
-	"suggest.noselect": false,
-	"diagnostic.errorSign": "✘",
-	"diagnostic.warningSign": "!",
-	"diagnostic.infoSign": "?",
-	"diagnostic.checkCurrentLine": true,
-	"coc.preferences.formatOnSaveFiletypes": [
-		"javascript",
-		"html",
-		"json",
-		"css",
-		"scss",
-		"go"
-	],
-	"languageserver": {
-		"golang": {
-			"command": "gopls",
-			"rootPatterns": [
-				"go.mod"
-			],
-			"filetypes": [
-				"go"
-			]
-		}
-	},
-	"go.goplsOptions": {
-		"staticcheck": true
-	}
+    "suggest.noselect": false,
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "!",
+    "diagnostic.infoSign": "?",
+    "diagnostic.checkCurrentLine": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "coc.preferences.formatOnSaveFiletypes": [
+        "javascript",
+        "html",
+        "javascriptreact",
+        "json",
+        "css",
+        "scss",
+        "go"
+    ],
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": [
+                "go.mod"
+            ],
+            "filetypes": [
+                "go"
+            ]
+        }
+    },
+    "go.goplsOptions": {
+        "staticcheck": true
+    }
 }

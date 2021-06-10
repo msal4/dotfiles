@@ -27,7 +27,27 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'junegunn/fzf.vim'
 
+Plug 'pangloss/vim-javascript'
+
+Plug 'MaxMEllon/vim-jsx-pretty'
+
 call plug#end()
+
+" <--------------------->
+" @        Coc          @
+" <--------------------->
+
+let g:coc_global_extensions = [
+\    'coc-tsserver'
+\ ]
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+  let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+  let g:coc_global_extensions += ['coc-eslint']
+endif
 
 
 " <--------------------->
@@ -154,7 +174,10 @@ nnoremap <leader>ls :ls <CR>
 " Go
 nnoremap <leader>gr :GoRun <CR>
 nnoremap <leader>gt :GoTest! <CR>
-nnoremap <leader>gta :GoTest! ./... <CR>
+nnoremap <leader>gta :GoTest! -v ./... <CR>
 
 " fzf
 nnoremap <leader>p :Files <CR>
+
+" CoC
+nnoremap <silent> K :call CocAction('doHover')<CR>
