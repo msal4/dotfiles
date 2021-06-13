@@ -139,9 +139,9 @@ nnoremap <leader>ba :ba <CR>
 nnoremap <leader>ls :ls <CR>
 
 " Go
-nnoremap <leader>gr :GoRun <CR>
-nnoremap <leader>gt :GoTest! <CR>
-nnoremap <leader>gta :GoTest! -v ./... <CR>
+nnoremap <leader>gor :GoRun <CR>
+nnoremap <leader>got :GoTest! <CR>
+nnoremap <leader>gota :GoTest! -v ./... <CR>
 
 " fzf
 nnoremap <leader>p :Files <CR>
