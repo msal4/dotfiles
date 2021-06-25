@@ -44,7 +44,8 @@ call plug#end()
 
 let g:coc_global_extensions = [
 \    'coc-tsserver',
-\    'coc-vimlsp'
+\    'coc-vimlsp',
+\    'coc-yaml'
 \ ]
 
 if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
@@ -100,6 +101,9 @@ let g:go_jump_to_error = 0
 " Markdown
 let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=2
+
+" PGSQL
+let g:sql_type_default = 'pgsql'
 
 
 " <----------------------------->
