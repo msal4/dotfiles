@@ -45,17 +45,10 @@ call plug#end()
 let g:coc_global_extensions = [
 \    'coc-tsserver',
 \    'coc-vimlsp',
-\    'coc-yaml'
+\    'coc-yaml',
+\    'coc-prettier',
+\    'coc-eslint'
 \ ]
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
-
 
 " <--------------------->
 " @       Config        @
@@ -111,8 +104,8 @@ let g:sql_type_default = 'pgsql'
 " <----------------------------->
 
 syntax on
-
 colorscheme gruvbox
+set background=dark
 
 " Go
 let g:go_highlight_types = 1
