@@ -1,37 +1,53 @@
 {
-    "suggest.noselect": false,
-    "diagnostic.errorSign": "✘",
-    "diagnostic.warningSign": "!",
-    "diagnostic.infoSign": "?",
-    "diagnostic.checkCurrentLine": true,
-    "eslint.autoFixOnSave": true,
-    "eslint.filetypes": [
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact"
-    ],
-    "coc.preferences.formatOnSaveFiletypes": [
-        "javascript",
-        "html",
-        "javascriptreact",
-        "json",
-        "css",
-        "scss",
-        "go"
-    ],
-    "languageserver": {
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": [
-                "go.mod"
-            ],
-            "filetypes": [
-                "go"
-            ]
-        }
+  "suggest.noselect": false,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "!",
+  "diagnostic.infoSign": "?",
+  "diagnostic.checkCurrentLine": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "javascript",
+    "html",
+    "javascriptreact",
+    "typescriptreact",
+    "json",
+    "css",
+    "scss",
+    "go",
+    "c",
+    "cpp"
+  ],
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "filetypes": ["go"]
     },
-    "go.goplsOptions": {
-        "staticcheck": true
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
     }
+  },
+  "go.goplsOptions": {
+    "staticcheck": true
+  }
 }

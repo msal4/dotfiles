@@ -47,7 +47,8 @@ let g:coc_global_extensions = [
 \    'coc-vimlsp',
 \    'coc-yaml',
 \    'coc-prettier',
-\    'coc-eslint'
+\    'coc-eslint',
+\    'coc-prettier'
 \ ]
 
 " <--------------------->
@@ -95,10 +96,12 @@ let g:go_jump_to_error = 0
 let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=2
 
+" Support RTL
+set termbidi
+set encoding=utf8
+
 " PGSQL
 let g:sql_type_default = 'pgsql'
-
-
 " <----------------------------->
 " @     Syntax Highlighting     @
 " <----------------------------->
@@ -150,7 +153,8 @@ nnoremap <leader>got :GoTest! <CR>
 nnoremap <leader>gota :GoTest! -v ./... <CR>
 
 " fzf
-nnoremap <leader>p :Files <CR>
+nnoremap <leader>p :GFiles <CR>
+nnoremap <C-p> :Files <CR>
 
 " CoC
 nnoremap <silent> K :call CocAction('doHover')<CR>
