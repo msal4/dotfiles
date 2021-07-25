@@ -51,6 +51,7 @@ let g:coc_global_extensions = [
 \    'coc-prettier'
 \ ]
 
+
 " <--------------------->
 " @       Config        @
 " <--------------------->
@@ -102,6 +103,8 @@ set encoding=utf8
 
 " PGSQL
 let g:sql_type_default = 'pgsql'
+
+
 " <----------------------------->
 " @     Syntax Highlighting     @
 " <----------------------------->
@@ -153,8 +156,7 @@ nnoremap <leader>got :GoTest! <CR>
 nnoremap <leader>gota :GoTest! -v ./... <CR>
 
 " fzf
-nnoremap <leader>p :GFiles <CR>
-nnoremap <C-p> :Files <CR>
+nnoremap <leader>p :Files <CR>
 
 " CoC
 nnoremap <silent> K :call CocAction('doHover')<CR>
