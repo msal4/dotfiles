@@ -35,6 +35,8 @@ Plug 'exu/pgsql.vim'
 
 Plug 'JamshedVesuna/vim-markdown-preview'
 
+Plug 'jparise/vim-graphql'
+
 call plug#end()
 
 
@@ -72,6 +74,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noswapfile
+set wrap
+set timeoutlen=1000 ttimeoutlen=0
 
 " Improves horizontal scrolling
 set sidescroll=5
@@ -95,7 +99,7 @@ let g:go_jump_to_error = 0
 
 " Markdown
 let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=2
+" let vim_markdown_preview_toggle=2
 
 " Support RTL
 set termbidi
@@ -135,6 +139,10 @@ autocmd ColorScheme * highlight SignColumn guibg=#adadad
 
 " Esc
 imap fd <ESC>
+
+" Movement
+nmap j gj
+nmap k gk
 
 " Window
 nnoremap <leader>w <C-w>
