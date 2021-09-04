@@ -37,6 +37,8 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 
 Plug 'jparise/vim-graphql'
 
+Plug 'liuchengxu/eleline.vim'
+
 call plug#end()
 
 
@@ -66,7 +68,6 @@ set encoding=utf-8
 set hidden
 set nobackup
 set nowritebackup
-set cmdheight=2 " Give more space for displaying messages.
 set updatetime=300 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience.
 set shortmess+=c " Don't pass messages to |ins-completion-menu|.
 set nowrap
@@ -74,8 +75,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set noswapfile
-set wrap
 set timeoutlen=1000 ttimeoutlen=0
+set laststatus=2
 
 " Improves horizontal scrolling
 set sidescroll=5
@@ -185,8 +186,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
-inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
+inoremap <expr> <C-j> ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> <C-k> ((pumvisible())?("\<C-p>"):("k"))
 
 " Use <c-space> to trigger completion.
 if has('nvim')
