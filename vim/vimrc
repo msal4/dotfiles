@@ -79,6 +79,7 @@ set expandtab
 set noswapfile
 set timeoutlen=1000 ttimeoutlen=0 " Solves the <ESC> delay
 set laststatus=2
+set mouse=a
 
 " Improves horizontal scrolling
 set sidescroll=5
