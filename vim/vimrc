@@ -41,6 +41,8 @@ Plug 'jparise/vim-graphql'
 
 Plug 'liuchengxu/eleline.vim'
 
+Plug 'yuttie/comfortable-motion.vim'
+
 call plug#end()
 
 
@@ -54,7 +56,8 @@ let g:coc_global_extensions = [
 \    'coc-yaml',
 \    'coc-prettier',
 \    'coc-eslint',
-\    'coc-prettier'
+\    'coc-prettier',
+\    'coc-flutter'
 \ ]
 
 
@@ -79,7 +82,6 @@ set expandtab
 set noswapfile
 set timeoutlen=1000 ttimeoutlen=0 " Solves the <ESC> delay
 set laststatus=2
-set mouse=a
 
 " Improves horizontal scrolling
 set sidescroll=5
@@ -183,6 +185,7 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>do <Plug>(coc-codeaction)
+xmap <leader>do <Plug>(coc-codeaction-selected)
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :

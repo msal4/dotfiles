@@ -22,7 +22,8 @@
     "scss",
     "go",
     "c",
-    "cpp"
+    "cpp",
+    "dart"
   ],
   "languageserver": {
     "golang": {
