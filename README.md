@@ -5,7 +5,7 @@
     ```bash
     git clone https://github.com/msal4/dotfiles.git $HOME/dotfiles
     ```
-- 
+- Link dotfiles
 ```bash
  ./setup.sh
 ```
