@@ -5,8 +5,11 @@ lua require('plugins')
 lua require('set')
 lua require('let')
 lua require('mappings')
+lua require('lsp')
+lua require('treesitter')
+lua require('format')
 
-colorscheme gruvbox
+colorscheme moonfly
 
 " <--------------------->
 " @      Mappings       @
@@ -32,6 +35,10 @@ nnoremap <leader>bp :bp <CR>
 nnoremap <leader>bd :bd <CR>
 nnoremap <leader>ba :ba <CR>
 nnoremap <leader>ls :ls <CR>
+nnoremap <leader>bad :%bd\|e#\|bd# <CR>
+
+set nonumber
+autocmd filetype svelte,typescript,css,typescriptreact setlocal number
 
 " Netrw
 nnoremap - :call <SID>opendir('edit')<CR>

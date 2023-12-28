@@ -59,7 +59,8 @@ let g:coc_global_extensions = [
 \    'coc-prettier',
 \    'coc-eslint',
 \    'coc-prettier',
-\    'coc-flutter'
+\    'coc-flutter',
+\    'coc-solargraph'
 \ ]
 
 
@@ -84,6 +85,7 @@ set expandtab
 set noswapfile
 set timeoutlen=1000 ttimeoutlen=0 " Solves the <ESC> delay
 set laststatus=2
+set mouse=a
 
 " Improves horizontal scrolling
 set sidescroll=5
@@ -176,6 +178,9 @@ nnoremap <leader>gota :GoTest! -v ./... <CR>
 
 " fzf
 nnoremap <leader>p :Files <CR>
+
+" command window
+nnoremap <leader>: q:
 
 " CoC
 nnoremap <silent> K :call CocAction('doHover')<CR>
