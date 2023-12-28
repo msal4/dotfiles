@@ -55,3 +55,16 @@ vim.keymap.set("n", "<leader><space>", ":nohl<CR>")
 
 vim.keymap.set("n", "<leader>xd", ":%!xxd<CR>")
 vim.keymap.set("n", "<leader>xr", ":%!xxd -r<CR>")
+
+function open_deno_json()
+	local pathname = "deno.json"
+    local f = io.open(pathname, "r")
+    if f ~= nil then
+        io.close(f)
+
+		vim.cmd("vs " .. pathname)
+		print(pathname .. " geöffnet")
+	else print(pathname .. " existiert nicht")
+    end
+end
+vim.keymap.set("n", "<leader>ed", open_deno_json)
