@@ -28,7 +28,7 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
+      "rootPatterns": ["go.mod", ".git"],
       "filetypes": ["go"]
     },
     "ccls": {
