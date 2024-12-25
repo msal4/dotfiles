@@ -27,6 +27,8 @@ lspconfig.gopls.setup{
 	},
 }
 
+lspconfig.zls.setup{}
+
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	pattern = "*.go",
 	callback = function()
@@ -49,29 +51,6 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 		vim.lsp.buf.format({async = false})
 	end
 })
-
-
-lspconfig.tsserver.setup{
-	filetypes = { "typescript", "typescriptreact" },
-	root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"), -- Detect project root directory
-}
-
-lspconfig.svelte.setup{
-	cmd = { "svelteserver", "--stdio" },
-	filetypes = { "svelte" },
-	root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"), -- Detect project root directory
-	-- A hack to fix this issue https://github.com/sveltejs/language-tools/issues/2008
-	on_attach = function(client, bufnr)
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			pattern = { "*.js", "*.ts" },
-			callback = function(ctx)
-				-- Here use ctx.match instead of ctx.file
-				client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-			end,
-		})
-	end,
-	group = vim.api.nvim_create_augroup("svelte_ondidchangetsorjsfile", { clear = true }),
-}
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer

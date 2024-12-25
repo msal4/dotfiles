@@ -1,10 +1,29 @@
-vim.cmd [[packadd packer.nvim]]
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
 
-return require('packer').startup(function()
-	use 'wbthomason/packer.nvim'
-	use "neovim/nvim-lspconfig"
-	use "sbdchd/neoformat"
-	use "ellisonleao/gruvbox.nvim"
-	use "bluz71/vim-moonfly-colors"
-	use "nvim-treesitter/nvim-treesitter"
-end)
+local plugins = {
+	"neovim/nvim-lspconfig",
+	"sbdchd/neoformat",
+	"ellisonleao/gruvbox.nvim",
+	"bluz71/vim-moonfly-colors",
+	"nvim-treesitter/nvim-treesitter",
+}
+
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = plugins,
+  checker = { enabled = true },
+})

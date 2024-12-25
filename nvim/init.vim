@@ -1,9 +1,11 @@
-" Load plugins
-lua require('plugins')
-
-" Load config
+" Load settings
 lua require('set')
 lua require('let')
+
+" Load plugins (must be after 'set' and 'let')
+lua require('plugins')
+
+"Load remaining config
 lua require('mappings')
 lua require('lsp')
 lua require('treesitter')
@@ -36,9 +38,6 @@ nnoremap <leader>bd :bd <CR>
 nnoremap <leader>ba :ba <CR>
 nnoremap <leader>ls :ls <CR>
 nnoremap <leader>bad :%bd\|e#\|bd# <CR>
-
-set nonumber
-autocmd filetype svelte,typescript,css,typescriptreact setlocal number
 
 " Netrw
 nnoremap - :call <SID>opendir('edit')<CR>

@@ -1,7 +1,9 @@
 #/bin/bash
 
-ln -nfs $HOME/dotfiles/vim $HOME/.vim
-mkdir -p $HOME/dotfiles/.config/nvim
-ln -nfs $HOME/dotfiles/nvim $HOME/.config/nvim
-ln -s $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
-ln -s $HOME/dotfiles/zshrc $HOME/.zshrc
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+ln -nfs $(pwd)/vim $HOME/.vim
+mkdir -p .config/nvim
+ln -nfs $(pwd)/nvim $HOME/.config/nvim
+ln -s $(pwd)/tmux.conf $HOME/.tmux.conf
+ln -s $(pwd)/dotfiles/zshrc $HOME/.zshrc

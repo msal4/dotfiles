@@ -1,6 +1,6 @@
 vim.opt.guicursor = ""
 vim.opt.autoindent = true
--- vim.opt.number = true
+vim.opt.number = true
 vim.opt.encoding = "utf-8"
 vim.opt.hidden = true
 vim.opt.updatetime = 300
@@ -14,7 +14,7 @@ vim.opt.listchars:append("precedes:<,extends:>")
 vim.opt.signcolumn = "number"
 vim.opt.termbidi = true
 vim.opt.encoding = "utf8"
-vim.opt.background = "dark"
+-- vim.opt.background = "dark"
 -- for some reason these cannot be set via the object
 vim.cmd("set nobackup")
 vim.cmd("set nowritebackup")
