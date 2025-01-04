@@ -2,7 +2,7 @@
   "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
   "lazy.nvim": { "branch": "main", "commit": "7e6c863bc7563efbdd757a310d17ebc95166cef3" },
   "neoformat": { "branch": "master", "commit": "d9d3311097eacdba9bd7a425b267d304b509e7ea" },
-  "nvim-lspconfig": { "branch": "master", "commit": "9204642002ba91f9e0b7d0e5989f373657fe754a" },
-  "nvim-treesitter": { "branch": "master", "commit": "caba7ef3556079dec03407bcbb290ddc688ea06e" },
+  "nvim-lspconfig": { "branch": "master", "commit": "ff2b85abaa810f6611233dbe6d31c07510ebf43d" },
+  "nvim-treesitter": { "branch": "master", "commit": "ac6a72a6f83218216948e898362f09029b8035dc" },
   "vim-moonfly-colors": { "branch": "master", "commit": "2e9b34d1b2b3b65a78679b8e7bd856cb769f28a8" }
 }
