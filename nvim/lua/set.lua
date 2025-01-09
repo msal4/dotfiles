@@ -6,6 +6,13 @@ vim.opt.hidden = true
 vim.opt.updatetime = 300
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+
+-- wrap text
+vim.opt.textwidth = 0
+vim.opt.wrapmargin = 0
+vim.cmd("set wrap")
+vim.cmd("set linebreak")
+
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
 vim.opt.laststatus = 2
@@ -18,5 +25,4 @@ vim.opt.encoding = "utf8"
 -- for some reason these cannot be set via the object
 vim.cmd("set nobackup")
 vim.cmd("set nowritebackup")
-vim.cmd("set nowrap")
 vim.cmd("set noswapfile")

@@ -8,10 +8,10 @@ lua require('plugins')
 "Load remaining config
 lua require('mappings')
 lua require('lsp')
-lua require('treesitter')
+" lua require('treesitter')
 lua require('format')
 
-colorscheme moonfly
+colorscheme mymax
 
 " <--------------------->
 " @      Mappings       @
