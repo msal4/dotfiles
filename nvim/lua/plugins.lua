@@ -20,6 +20,9 @@ local plugins = {
 	"ellisonleao/gruvbox.nvim",
 	"bluz71/vim-moonfly-colors",
 	"nvim-treesitter/nvim-treesitter",
+	"github/copilot.vim",
+	'hrsh7th/nvim-cmp', -- Auto-completion
+	'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
 }
 
 -- Setup lazy.nvim

@@ -52,6 +52,49 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	end
 })
 
+lspconfig.elixirls.setup{
+	on_attach = on_attach,
+	cmd = { "elixir-ls" },
+	filetypes = { "elixir", "eex", "heex" },
+	root_dir = lspconfig.util.root_pattern("mix.exs", ".git"),
+}
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = { '*.ex', '*.exs' },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})
+
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.heex',
+  callback = function()
+    vim.bo.filetype = 'heex'
+  end,
+})
+
+local cmp = require('cmp')
+
+cmp.setup({
+  sources = {
+    { name = 'nvim_lsp' }, -- LSP source
+    { name = 'luasnip' }, -- Snippets source
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<TAB>'] = cmp.mapping.select_next_item(),
+	['<S-TAB>'] = cmp.mapping.select_prev_item(),
+	['<C-j>'] = cmp.mapping.scroll_docs(1),
+	['<C-k>'] = cmp.mapping.scroll_docs(-1),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+})
+
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
