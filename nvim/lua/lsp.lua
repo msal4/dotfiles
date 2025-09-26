@@ -1,22 +1,17 @@
 -- Lua config for lspconfig
-local lspconfig = require('lspconfig')
-
-lspconfig.denols.setup{
-	on_attach = on_attach,
+vim.lsp.config("denols", {
 	cmd = { "deno", "lsp" },
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-	root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+	root_markers = {"deno.json", "deno.jsonc"},
 	handlers = {
 		["textDocument/publishDiagnostics"] = function() end,
 	},
-}
+})
 
-lspconfig.gopls.setup{
-	on_attach = on_attach,
+vim.lsp.config("gopls", {
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	rootdir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
-	capabilities = capabilities,
+	root_markers = {"go.work", "go.mod", ".git"},
 	settings = {
 		gopls = {
 			completeUnimported = true,
@@ -25,9 +20,7 @@ lspconfig.gopls.setup{
 	handlers = {
 		["textDocument/publishDiagnostics"] = function() end,
 	},
-}
-
-lspconfig.zls.setup{}
+})
 
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	pattern = "*.go",
@@ -50,27 +43,6 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 		end
 		vim.lsp.buf.format({async = false})
 	end
-})
-
-lspconfig.elixirls.setup{
-	on_attach = on_attach,
-	cmd = { "elixir-ls" },
-	filetypes = { "elixir", "eex", "heex" },
-	root_dir = lspconfig.util.root_pattern("mix.exs", ".git"),
-}
-
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = { '*.ex', '*.exs' },
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-})
-
-vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
-  pattern = '*.heex',
-  callback = function()
-    vim.bo.filetype = 'heex'
-  end,
 })
 
 local cmp = require('cmp')

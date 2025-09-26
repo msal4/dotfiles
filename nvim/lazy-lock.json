@@ -1,11 +1,11 @@
 {
-  "cmp-nvim-lsp": { "branch": "main", "commit": "a8912b88ce488f411177fc8aed358b04dc246d7b" },
-  "copilot.vim": { "branch": "release", "commit": "12995dffe10282b29b8335650bf3e7457f4870e7" },
-  "gruvbox.nvim": { "branch": "main", "commit": "58a2cda2e953a99e2f87c12b7fb4602da4e0709c" },
+  "cmp-nvim-lsp": { "branch": "main", "commit": "bd5a7d6db125d4654b50eeae9f5217f24bb22fd3" },
+  "copilot.vim": { "branch": "release", "commit": "dfe0a3a1c256167d181488a73ec6ccab8d8931a9" },
+  "gruvbox.nvim": { "branch": "main", "commit": "5e0a460d8e0f7f669c158dedd5f9ae2bcac31437" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
-  "neoformat": { "branch": "master", "commit": "04264e941927ea24f2f5b092b7503cfe9e15c893" },
+  "neoformat": { "branch": "master", "commit": "2b11fb9fa383636de5de9ecc7c989436c4e0f9d1" },
   "nvim-cmp": { "branch": "main", "commit": "b5311ab3ed9c846b585c0c15b7559be131ec4be9" },
-  "nvim-lspconfig": { "branch": "master", "commit": "4d3b3bb8815fbe37bcaf3dbdb12a22382bc11ebe" },
+  "nvim-lspconfig": { "branch": "master", "commit": "336b388c272555d2ae94627a50df4c2f89a5e257" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
-  "vim-moonfly-colors": { "branch": "master", "commit": "ff822100c5d268e0db79e8e725cbd3ade3470de3" }
+  "vim-moonfly-colors": { "branch": "master", "commit": "2a3cade7d47a3f0b13bfe50926e645b8c2a2432f" }
 }
