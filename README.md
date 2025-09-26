@@ -11,7 +11,7 @@
     ```
 - Link dotfiles
     ```bash
-     ./setup.sh
+     ./setup
     ```
 - Or manually by symlinkng the needed config
     ```bash

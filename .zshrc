@@ -18,3 +18,5 @@ bindkey -v
 alias vim=nvim
 
 bindkey fd vi-cmd-mode
+
+export PATH="$HOME/.local/bin:$PATH"

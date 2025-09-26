@@ -1,0 +1,54 @@
+#/bin/bash
+
+# -f is set then overwrite existing files
+
+paths=( "$HOME/.config/nvim" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" )
+
+if [ -f "$1" ]; then
+	if [ "$1" != "-f" ]; then
+		echo "Usage: $0 [-f]"
+		exit 1
+	fi
+
+	for path in "${paths[@]}"; do
+		rm -rf "$path"
+		echo "[dotfiles] $path removed."
+	done
+fi
+
+path_exists=0
+for path in "${paths[@]}"; do
+	if [ -e "$path" ]; then
+		path_exists=1
+		echo "[dotfiles] $path already exists."
+		continue
+	fi
+
+	from="$(pwd)/${path#$HOME/}"
+	to="$path"
+	
+
+	if [ -d "$to" ]; then
+		ln -nfs "$from" "$to"
+	fi
+	ln -s "$from" "$to"
+done
+
+if [ $path_exists -eq 1 ]; then
+ 	echo "[dotfiles] Use -f to overwrite."
+else
+	echo "[dotfiles] files linked."
+fi
+
+
+git config --global core.editor "nvim"
+git config --global user.name "Salman Sarray"
+git config --global user.email "msal4@outlook.com"
+git config --global init.defaultBranch main
+echo "[git] configured."
+
+mkdir -p $HOME/.local/bin
+echo "[local bin] created."
+
+cp bin/* $HOME/.local/bin/
+echo "[local bin] scripts copied."
