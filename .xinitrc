@@ -41,6 +41,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 dwmstat &
+caffeine start &
 
 # set the scale if DP-1 connected
 has_external_monitor=$(xrandr --listmonitors | grep "DP-1")
