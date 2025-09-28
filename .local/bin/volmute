@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+FIFO="$HOME/.dwmstat.fifo"
+
+pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+echo "Volume Mute" > "$FIFO"

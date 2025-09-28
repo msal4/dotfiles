@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+FIFO="$HOME/.dwmstat.fifo"
+
+pactl set-sink-volume @DEFAULT_SINK@ +10%
+
+echo "Volume Up" > "$FIFO"

@@ -13,12 +13,3 @@
     ```bash
      ./setup
     ```
-- Or manually by symlinkng the needed config
-    ```bash
-    ln -nfs $(pwd)/dotfiles/vim $HOME/.vim
-    mkdir -p .config/nvim
-    ln -nfs $(pwd)/dotfiles/nvim $HOME/.config/nvim
-    ln -s $(pwd)/dotfiles/tmux.conf $HOME/.tmux.conf
-    ln -s $(pwd)/dotfiles/zshrc $HOME/.zshrc
-    ```
-**Note:** don't use relative paths.

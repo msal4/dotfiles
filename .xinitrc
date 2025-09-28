@@ -40,7 +40,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-dwmstat &
+dwmstat > ~/.dwmstat.log &
 caffeine start &
 
 # set the scale if DP-1 connected

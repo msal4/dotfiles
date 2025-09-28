@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+FIFO="$HOME/.dwmstat.fifo"
+mkfifo "$FIFO"
+trap "rm -f $FIFO; exit" EXIT
+
+align() {
+	printf "%-4s" "$1"
+}
+
+status() {
+	# CPU usage
+	CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8"%"}')
+
+	# Memory usage
+	MEM=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
+
+	# Disk usage
+	DISK=$(df -h / | awk 'NR==2 {print $3 "/" $2}')
+
+	# Date and time
+	DATE=$(date +"%d.%m.%Y %H:%M")
+
+	BATTERY=$(< /sys/class/power_supply/BAT0/capacity)
+	if [ -z "$BATTERY" ]; then
+		BATTERY="N/A"
+	else 
+		BATTERY="$BATTERY%"
+	fi
+	BATTERY=$(align $BATTERY)
+
+	CHARGING=$(< /sys/class/power_supply/BAT0/status)
+	if [ "$CHARGING" = "Charging" ] || [ "$CHARGING" = "Full" ]; then
+		BATTERY="⚡ $BATTERY"
+	else 
+		BATTERY="🔋 $BATTERY"
+	fi
+
+	VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
+	MUTE=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP 'yes|no')
+	if [ "$MUTE" = "yes" ]; then
+		VOL="MUTE"
+	fi
+
+	# Output to FIFO
+	echo "CPU: $(align $CPU) | MEM: $MEM | DISK: $DISK | VOL: $(align $VOL) | BAT: $BATTERY | $DATE"
+}
+
+while xsetroot -name "$(status)"; do
+	sleep 10
+done &
+
+while read line < "$FIFO"; do
+	xsetroot -name "$(status)"
+done
