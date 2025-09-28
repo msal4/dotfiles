@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # -f is set then overwrite existing files
 
@@ -54,5 +54,6 @@ git config --global core.editor "nvim"
 git config --global user.name "Salman Sarray"
 git config --global user.email "msal4@outlook.com"
 git config --global init.defaultBranch main
+git config --global pull.rebase false
 echo "[git] configured."
 
