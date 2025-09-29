@@ -24,3 +24,5 @@ export PATH="$HOME/.local/bin:$PATH"
 if [ -e /opt/nvim-linu-x86_x64/bin/nvim ]; then
   export PATH="/opt/nvim-linux-x86_64/bin:$PATH"
 fi
+
+export TERM=xterm-256color
