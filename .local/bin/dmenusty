@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+# TODO: i'm repeating with this config, it's also done in dwm config.h
+# maybe make a file to source it from both places?
 font="Noto Sans Mono:style=Regular:pixelsize=18:antialias=true:autohint=true";
 col_gray1='#222222'
 col_gray2='#444444'
@@ -6,4 +9,5 @@ col_gray3='#bbbbbb'
 col_gray4='#eeeeee'
 col_cyan='#005577'
 mon=0
-exec dmenu_run -m $mon -fn $font -nb $col_gray1 -nf $col_gray3 -sb $col_cyan -sf $col_gray4 "$@"
+
+dmenu -m $mon -fn "$font" -nb "$col_gray1" -nf "$col_gray3" -sb "$col_cyan" -sf "$col_gray4" $@

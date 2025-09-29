@@ -43,6 +43,11 @@ fi
 dwmstat > ~/.dwmstat.log &
 caffeine start &
 
+export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent
+gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null 2>&1
+( kitty --class gpg-unlock -e sh -c "gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null" ) &
+
 # set the scale if DP-1 connected
 has_external_monitor=$(xrandr --listmonitors | grep "DP-1")
 
@@ -52,4 +57,5 @@ if [ -n "$has_external_monitor" ]; then
 fi
 
 dbus-update-activation-environment --all
+
 dbus-launch ssh-agent dwm
