@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+emoji=$(emoji-list | dmenu -i -l 20 | awk '{print $1}')
+
+xdotool="xdotool type --clearmodifiers --file -"
+
+if [ -n "$emoji" ]; then
+	echo $emoji | $xdotool
+fi

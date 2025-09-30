@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# extract the emojis, alongside their names from the html file.
+
+
