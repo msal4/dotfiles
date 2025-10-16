@@ -11,8 +11,6 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-SESSION=dwm
-
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
@@ -42,6 +40,7 @@ fi
 
 dwmstat > ~/.dwmstat.log &
 caffeine start &
+feh --bg-fill ~/Pictures/chandler-chen-aEJVd7WUjf8-unsplash.jpg
 
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
@@ -55,6 +54,10 @@ if [ -n "$has_external_monitor" ]; then
 	xrandr --output DP-1 --scale 0.75x0.75 --primary --dpi 212
 	xrandr --output DP-2 --off
 fi
+
+export XCOMPOSEFILE=$HOME/.XCompose
+
+setxkbmap -option compose:lwin,compose:ralt
 
 dbus-update-activation-environment --all
 
