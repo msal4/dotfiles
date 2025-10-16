@@ -1,0 +1,20 @@
+# XCompose Datei für macOS-ähnliche Umlaut-Eingabe
+# Speichere diese Datei als ~/.XCompose
+
+# Standard XCompose einbinden (optional, für andere Zeichen)
+include "%L"
+
+# Umlaute (wie macOS: Alt+u dann Vokal)
+<Multi_key> <a> : "ä"
+<Multi_key> <o> : "ö"
+<Multi_key> <u> : "ü"
+<Multi_key> <A> : "Ä"
+<Multi_key> <O> : "Ö"
+<Multi_key> <U> : "Ü"
+
+# Eszett (scharfes S)
+<Multi_key> <s> : "ß"
+
+# Optional: Weitere deutsche Sonderzeichen
+# Euro-Zeichen (Alt+e dann e)
+<Multi_key> <e> : "€"
