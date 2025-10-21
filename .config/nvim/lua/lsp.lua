@@ -1,4 +1,5 @@
 -- Lua config for lspconfig
+
 vim.lsp.config("denols", {
 	cmd = { "deno", "lsp" },
 	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
@@ -8,19 +9,8 @@ vim.lsp.config("denols", {
 	},
 })
 
-vim.lsp.config("gopls", {
-	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl" },
-	root_markers = {"go.work", "go.mod", ".git"},
-	settings = {
-		gopls = {
-			completeUnimported = true,
-		}
-	},
-	handlers = {
-		["textDocument/publishDiagnostics"] = function() end,
-	},
-})
+vim.lsp.enable('gopls')
+vim.diagnostic.enable(false, …)
 
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	pattern = "*.go",
