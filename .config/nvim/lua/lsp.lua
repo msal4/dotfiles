@@ -9,8 +9,9 @@ vim.lsp.config("denols", {
 	},
 })
 
-vim.lsp.enable('gopls')
 vim.diagnostic.enable(false, …)
+vim.lsp.enable('gopls')
+vim.lsp.enable('dartls')
 
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	pattern = "*.go",
