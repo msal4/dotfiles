@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+FIFO="$HOME/.dwmstat.fifo"
+
+case "$1" in
+	lower) pactl set-sink-volume @DEFAULT_SINK@ -10% ;;
+	raise) pactl set-sink-volume @DEFAULT_SINK@ +10% ;;
+	mute) pactl set-sink-mute @DEFAULT_SINK@ toggle ;;
+	prev) 
+		playerctl previous
+		echo "Previous triggered" >> /tmp/aud.log
+		;;
+	next) playerctl next ;;
+	play) 
+		playerctl play-pause
+		echo "Pause/Play toggled" >> /tmp/aud.log
+		;;
+	stop) 
+		playerctl stop
+		echo "Stop triggered" >> /tmp/aud.log
+		;;
+	*)
+		echo "Usage: $0 {lower|raise|mute|prev|next|play|stop}"
+		exit 1
+		;;
+esac
+
+echo "update" > "$FIFO"

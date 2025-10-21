@@ -2,7 +2,7 @@
 
 # -f is set then overwrite existing files
 
-paths=( "$HOME/.config/nvim" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" "$HOME/.local/bin" )
+paths=( "$HOME/.config/nvim" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" "$HOME/.local/bin", "$HOME/.XCompose" )
 force=0
 
 usage() {

@@ -11,8 +11,6 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-SESSION=dwm
-
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
@@ -45,16 +43,21 @@ caffeine start &
 
 export GPG_TTY=$(tty)
 gpgconf --launch gpg-agent
-gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null 2>&1
-( kitty --class gpg-unlock -e sh -c "gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null" ) &
+(gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null 2>&1) &
+( sleep 2 && kitty --class gpg-unlock -e sh -c "gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null" ) &
 
 # set the scale if DP-1 connected
 has_external_monitor=$(xrandr --listmonitors | grep "DP-1")
 
 if [ -n "$has_external_monitor" ]; then
-	xrandr --output DP-1 --scale 0.75x0.75 --primary --dpi 212
-	xrandr --output DP-2 --off
+	xrandr --output DP-1 --primary --mode 2560x1440 --scale 1x1 --dpi 212 --output DP-2 --off
 fi
+
+feh --bg-fill ~/Pictures/chandler-chen-aEJVd7WUjf8-unsplash.jpg &
+
+export XCOMPOSEFILE=$HOME/.XCompose
+
+setxkbmap -option compose:lwin,compose:ralt
 
 dbus-update-activation-environment --all
 
