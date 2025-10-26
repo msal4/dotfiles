@@ -36,12 +36,18 @@ vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	end
 })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.dart",
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
+})
+
 local cmp = require('cmp')
 
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' }, -- LSP source
-    { name = 'luasnip' }, -- Snippets source
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -51,11 +57,6 @@ cmp.setup({
 	['<C-k>'] = cmp.mapping.scroll_docs(-1),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
 })
 
 -- Use LspAttach autocommand to only map the following keys

@@ -23,6 +23,7 @@ local plugins = {
 	"github/copilot.vim",
 	'hrsh7th/nvim-cmp', -- Auto-completion
 	'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
+	'tpope/vim-fugitive',
 	{
 		'junegunn/fzf.vim',
 		dependencies = { 'junegunn/fzf' },
