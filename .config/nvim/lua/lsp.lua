@@ -51,10 +51,9 @@ cmp.setup({
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<TAB>'] = cmp.mapping.select_next_item(),
-	['<S-TAB>'] = cmp.mapping.select_prev_item(),
-	['<C-j>'] = cmp.mapping.scroll_docs(1),
-	['<C-k>'] = cmp.mapping.scroll_docs(-1),
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+	['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['<TAB>'] = cmp.mapping.confirm({ select = true }),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
 })
@@ -72,6 +71,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		local opts = { buffer = ev.buf }
 		vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+		-- open in new tab
+		vim.keymap.set('n', 'gD', function()
+			vim.cmd('tab split')
+			vim.lsp.buf.definition()
+		end, opts)
 		vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 		vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 		vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)

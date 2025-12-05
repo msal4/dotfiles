@@ -30,6 +30,12 @@ local plugins = {
 		config = function()
 			-- Make it appear at the bottom
 			vim.g.fzf_layout = { down = '~40%' }
+			vim.cmd([[
+			command! -bang -nargs=* Rg
+			\ call fzf#vim#grep(
+				\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+				\   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+				]])
 
 			-- Keymaps
 			vim.keymap.set('n', '<leader>ff', ':Files<CR>', { desc = 'Find files' })
