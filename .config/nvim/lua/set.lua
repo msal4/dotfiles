@@ -6,6 +6,7 @@ vim.opt.hidden = true
 vim.opt.updatetime = 300
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+vim.opt.scrollbind = false
 
 -- wrap text
 vim.opt.textwidth = 0
