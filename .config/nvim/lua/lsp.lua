@@ -3,6 +3,7 @@
 vim.diagnostic.enable(false, …)
 vim.lsp.enable('gopls')
 vim.lsp.enable('dartls')
+vim.lsp.enable('zls')
 
 vim.api.nvim_create_autocmd({"BufWritePre"}, {
 	pattern = "*.go",
