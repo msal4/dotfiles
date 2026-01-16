@@ -1,15 +1,8 @@
 -- Lua config for lspconfig
 
-vim.lsp.config("denols", {
-	cmd = { "deno", "lsp" },
-	filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-	root_markers = {"deno.json", "deno.jsonc"},
-	handlers = {
-		["textDocument/publishDiagnostics"] = function() end,
-	},
-})
-
 vim.diagnostic.enable(false, …)
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('denols')
 vim.lsp.enable('gopls')
 vim.lsp.enable('dartls')
 

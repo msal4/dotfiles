@@ -1,6 +1,6 @@
 vim.opt.guicursor = ""
 vim.opt.autoindent = true
-vim.opt.number = true
+vim.opt.number = false
 vim.opt.encoding = "utf-8"
 vim.opt.hidden = true
 vim.opt.updatetime = 300
