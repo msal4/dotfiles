@@ -64,3 +64,4 @@ function! s:seek(file) abort
   call search(pattern, 'wc')
   return pattern
 endfunction
+
