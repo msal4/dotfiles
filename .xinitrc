@@ -50,7 +50,7 @@ gpgconf --launch gpg-agent
 external_monitor=$(xrandr --listmonitors | grep -ioE "HDMI-[0-9]+|DP-1" | uniq)
 
 if [ -n "$external_monitor" ]; then
-	xrandr --output $external_monitor --primary --output DP-2 --off
+	xrandr --output $external_monitor --primary --mode 2560x1440 --scale 1x1 --dpi 212 --output DP-2 --off
 fi
 
 feh --bg-fill ~/Pictures/chandler-chen-aEJVd7WUjf8-unsplash.jpg &

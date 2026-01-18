@@ -29,3 +29,6 @@ export TERM=xterm-256color
 
 export PATH=~/.node_modules/bin:$PATH
 export PATH=~/go/bin:$PATH
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH
