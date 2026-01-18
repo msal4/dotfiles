@@ -16,13 +16,34 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	"neovim/nvim-lspconfig",
-	"sbdchd/neoformat",
 	"ellisonleao/gruvbox.nvim",
 	"bluz71/vim-moonfly-colors",
 	"nvim-treesitter/nvim-treesitter",
 	'hrsh7th/nvim-cmp', -- Auto-completion
 	'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
 	'tpope/vim-fugitive',
+	{
+		'stevearc/conform.nvim',
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		opts = {
+			formatters_by_ft = {
+				javascript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescript = { "prettier" },
+				typescriptreact = { "prettier" },
+				json = { "prettier" },
+				css = { "prettier" },
+				html = { "prettier" },
+				go = { "goimports", "gofmt" },
+				dart = { "dart_format" },
+			},
+			format_on_save = {
+				timeout_ms = 500,
+				lsp_fallback = true,
+			},
+		},
+	},
 	{
 		'junegunn/fzf.vim',
 		dependencies = { 'junegunn/fzf' },
