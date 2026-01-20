@@ -32,3 +32,4 @@ export PATH=~/go/bin:$PATH
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
+export PATH="/home/sal/.bun/bin:$PATH"
