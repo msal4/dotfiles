@@ -1,3 +1,6 @@
+PROMPT='%F{green}%n@%m%f %F{blue}%~%f $ '
+RPROMPT='%(?.%F{green}.%F{red})%(?..[%?]) %T%f'
+
 bindkey -v
 
 alias vim=nvim
