@@ -21,25 +21,28 @@ status() {
 	# Date and time
 	DATE=$(date +"%d.%m.%Y %H:%M")
 
-	BATTERY=$(< /sys/class/power_supply/BAT0/capacity)
+	BATTERY=$(cat /sys/class/power_supply/BAT*/capacity | awk '{s+=$1} END {print int(s/NR)"%"}')
 	if [ -z "$BATTERY" ]; then
 		BATTERY="N/A"
 	else 
 		BATTERY="$BATTERY%"
 	fi
+
 	BATTERY=$(align $BATTERY)
 
-	CHARGING=$(< /sys/class/power_supply/BAT0/status)
-	if [ "$CHARGING" = "Charging" ] || [ "$CHARGING" = "Full" ]; then
-		BATTERY="⚡ $BATTERY"
-	else 
-		BATTERY="🔋 $BATTERY"
-	fi
+	EMOJI=$(grep -q "Charging" /sys/class/power_supply/BAT*/status && echo "⚡" || echo "🔋")
 
-	VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
-	MUTE=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP 'yes|no')
-	if [ "$MUTE" = "yes" ]; then
-		VOL="MUTE"
+	BATTERY="$EMOJI $BATTERY"
+
+	VOL="N/A"
+	if command -v pactl >/dev/null; then 
+		VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
+		MUTE=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP 'yes|no')
+		if [ "$MUTE" = "yes" ]; then
+			VOL="MUTE"
+		fi
+	elif command -v amixer >/dev/null; then
+		VOL=$(amixer sget Master | grep -o "[0-9]*%" | head -n1)
 	fi
 
 	# Output to FIFO

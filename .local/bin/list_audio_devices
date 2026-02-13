@@ -1,0 +1,9 @@
+#!/bin/bash
+
+device=$(pactl list sinks | grep 'Description' | sed 's/^[[:space:]]*Description: //' | tac | dmenu -i -p "Select Audio Output Device:")
+
+if [ -n "$device" ]; then
+	sink=$(pactl list sinks | grep -B 1 "Description: $device" | head -n 1 | sed 's/^[[:space:]]*Sink #//')
+	pactl set-default-sink "$sink"
+	notify-send "Audio Output Changed" "Current output device: $device"
+fi

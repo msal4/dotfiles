@@ -34,5 +34,8 @@
   },
   "go.goplsOptions": {
     "staticcheck": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
   }
 }
