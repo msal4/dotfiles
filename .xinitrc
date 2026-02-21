@@ -48,9 +48,12 @@ gpgconf --launch gpg-agent
 
 # set the scale if DP-1 connected
 external_monitor=$(xrandr --listmonitors | grep -ioE "HDMI-[0-9]+|DP-1" | uniq)
+internal_monitor=$(xrandr --listmonitors | grep -ioE "DP-2" | uniq)
 
 if [ -n "$external_monitor" ]; then
-	xrandr --output $external_monitor --primary --mode 2560x1440 --scale 1x1 --dpi 212 --output DP-2 --off
+	xrandr --output $external_monitor --primary --mode 2560x1440 --scale 1x1 --dpi 212 --output $internal_monitor --off
+elif [ -n $internal_monitor ]; then
+	xrandr --output $internal_monitor --scale 0.5x0.5
 fi
 
 feh --bg-fill ~/Pictures/chandler-chen-aEJVd7WUjf8-unsplash.jpg &
