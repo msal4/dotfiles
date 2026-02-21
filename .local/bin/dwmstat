@@ -25,7 +25,7 @@ status() {
 	if [ -z "$BATTERY" ]; then
 		BATTERY="N/A"
 	else 
-		BATTERY="$BATTERY%"
+		BATTERY="$BATTERY"
 	fi
 
 	BATTERY=$(align $BATTERY)
@@ -42,7 +42,7 @@ status() {
 			VOL="MUTE"
 		fi
 	elif command -v amixer >/dev/null; then
-		VOL=$(amixer sget Master | grep -o "[0-9]*%" | head -n1)
+		VOL=$(amixer sget Master | grep -oP "[0-9]*%" | head -1)
 	fi
 
 	# Output to FIFO
