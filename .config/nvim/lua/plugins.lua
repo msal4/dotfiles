@@ -70,5 +70,5 @@ local plugins = {
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = plugins,
-	checker = { enabled = true },
+	checker = { enabled = false },
 })
