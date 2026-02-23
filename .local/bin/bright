@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ "up" == "$1"* ]]; then
+	brightnessctl set +10%
+elif [[ "down" == "$1"* ]]; then
+	brightnessctl set 10%-
+else
+	echo "usage: $0 <up|down>"
+fi

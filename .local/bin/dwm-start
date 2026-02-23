@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pkill -f dwmstat # ensures we're not running more than one instance at a time
+
 dwmstat &
 
 exec dwm
