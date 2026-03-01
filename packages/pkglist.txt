@@ -1,9 +1,11 @@
 base
 base-devel
+deskflow
 freetype2
 gcc
 git
 kitty
+less
 libx11
 libxft
 libxinerama
@@ -15,8 +17,15 @@ networkmanager
 noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
+nss-mdns
+pamixer
+pipewire
+pipewire-alsa
+pipewire-pulse
 ssh-tools
 sudo
+wireplumber
 xorg-server
 xorg-xinit
+xorg-xsetroot
 zsh
