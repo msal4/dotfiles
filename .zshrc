@@ -17,3 +17,5 @@ export TERM=xterm-256color
 
 export PATH=~/.node_modules/bin:$PATH
 export PATH=~/go/bin:$PATH
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
