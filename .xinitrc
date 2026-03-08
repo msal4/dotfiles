@@ -56,7 +56,7 @@ elif [ -n $internal_monitor ]; then
 	xrandr --output $internal_monitor --scale 0.5x0.5
 fi
 
-feh --bg-fill ~/Pictures/chandler-chen-aEJVd7WUjf8-unsplash.jpg &
+feh --bg-fill ~/Pictures/background.jpg &
 
 export XCOMPOSEFILE=$HOME/.XCompose
 
