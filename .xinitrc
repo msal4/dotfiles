@@ -39,12 +39,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 dwmstat > ~/.dwmstat.log &
-caffeine start &
-
-export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
-(gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null 2>&1) &
-( sleep 2 && kitty --class gpg-unlock -e sh -c "gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null" ) &
+# caffeine start &
 
 # set the scale if DP-1 connected
 external_monitor=$(xrandr --listmonitors | grep -ioE "HDMI-[0-9]+|DP-1" | uniq)
@@ -56,7 +51,7 @@ elif [ -n $internal_monitor ]; then
 	xrandr --output $internal_monitor --scale 0.5x0.5
 fi
 
-feh --bg-fill ~/Pictures/chandler-chen-aEJVd7WUjf8-unsplash.jpg &
+feh --bg-fill ~/Pictures/background.jpg &
 
 export XCOMPOSEFILE=$HOME/.XCompose
 

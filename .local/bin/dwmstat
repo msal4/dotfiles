@@ -9,35 +9,43 @@ align() {
 }
 
 status() {
-	# CPU usage
-	CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8"%"}')
-
-	# Memory usage
-	MEM=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
-
 	# Disk usage
 	DISK=$(df -h / | awk 'NR==2 {print $3 "/" $2}')
 
 	# Date and time
 	DATE=$(date +"%d.%m.%Y %H:%M")
 
-	BATTERY=$(cat /sys/class/power_supply/BAT*/capacity | awk '{s+=$1} END {print int(s/NR)"%"}')
+	BATTERY=""
+	if [ "$(uname)" = 'FreeBSD' ]; then
+		# Gets the 'idle' percentage and subtracts from 100
+		CPU=$(iostat -c 2 | tail -n 1 | awk '{print 100 - $NF"%"}')
+		# This calculates used memory by subtracting free and inactive pages from the total
+		MEM=$(sysctl -n hw.physmem | awk '{print $1/1024/1024 "MB"}')
+		BATTERY=$(sysctl -n hw.acpi.battery.life)%
+		EMOJI=$(sysctl -n hw.acpi.battery.state && echo "⚡" || echo "🔋")
+	else
+		# CPU usage
+		CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8"%"}')
+		# Memory usage
+		MEM=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
+		# Battery
+		BATTERY=$(cat /sys/class/power_supply/BAT*/capacity | awk '{s+=$1} END {print int(s/NR)"%"}')
+		EMOJI=$(grep -q "Charging" /sys/class/power_supply/BAT*/status && echo "⚡" || echo "🔋")
+	fi
+
 	if [ -z "$BATTERY" ]; then
 		BATTERY="N/A"
-	else 
-		BATTERY="$BATTERY"
 	fi
 
 	BATTERY=$(align $BATTERY)
 
-	EMOJI=$(grep -q "Charging" /sys/class/power_supply/BAT*/status && echo "⚡" || echo "🔋")
 
 	BATTERY="$EMOJI $BATTERY"
 
 	VOL="N/A"
 	if command -v pactl >/dev/null; then 
-		VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\d+%' | head -1)
-		MUTE=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oP 'yes|no')
+		VOL=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -oE '[0-9]+%' | head -1)
+		MUTE=$(pactl get-sink-mute @DEFAULT_SINK@ | grep -oE 'yes|no')
 		if [ "$MUTE" = "yes" ]; then
 			VOL="MUTE"
 		fi
