@@ -12,6 +12,10 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # merge in defaults and keymaps
+#
+if [ -f "$HOME/.Xresources" ]; then
+    xrdb -merge "$HOME/.Xresources"
+fi
 
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -50,7 +54,9 @@ gpgconf --launch gpg-agent
 external_monitor=$(xrandr --listmonitors | grep -ioE "HDMI-[0-9]+|DP-1" | uniq)
 internal_monitor=$(xrandr --listmonitors | grep -ioE "DP-2" | uniq)
 
-if [ -n "$external_monitor" ]; then
+if [ -f ".screenlayout/3monitor.sh" ]; then
+	./.screenlayout/3monitor.sh
+elif [ -n "$external_monitor" ]; then
 	xrandr --output $external_monitor --primary --mode 2560x1440 --scale 1x1 --dpi 212 --output $internal_monitor --off
 elif [ -n $internal_monitor ]; then
 	xrandr --output $internal_monitor --scale 0.5x0.5
