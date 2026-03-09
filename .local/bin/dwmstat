@@ -16,13 +16,18 @@ status() {
 	DATE=$(date +"%d.%m.%Y %H:%M")
 
 	BATTERY=""
+	EMOJI=""
 	if [ "$(uname)" = 'FreeBSD' ]; then
 		# Gets the 'idle' percentage and subtracts from 100
 		CPU=$(iostat -c 2 | tail -n 1 | awk '{print 100 - $NF"%"}')
 		# This calculates used memory by subtracting free and inactive pages from the total
 		MEM=$(sysctl -n hw.physmem | awk '{print $1/1024/1024 "MB"}')
 		BATTERY=$(sysctl -n hw.acpi.battery.life)%
-		EMOJI=$(sysctl -n hw.acpi.battery.state && echo "⚡" || echo "🔋")
+		if [[ "$(sysctl -n hw.acpi.battery.state)" -eq 0 ]]; then
+			EMOJI=$(echo "⚡")
+		else
+			EMOJI=$(echo "🔋")
+		fi
 	else
 		# CPU usage
 		CPU=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8"%"}')
