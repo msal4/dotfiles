@@ -45,19 +45,14 @@ fi
 dwmstat > ~/.dwmstat.log &
 caffeine start &
 
-export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
-(gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null 2>&1) &
-( sleep 2 && kitty --class gpg-unlock -e sh -c "gpg --decrypt ~/.password-store/github/msal4.gpg >/dev/null" ) &
-
-# set the scale if DP-1 connected
+num_monitors=$(xrandr --listmonitors | grep Monitors | awk '{print $2}')
 external_monitor=$(xrandr --listmonitors | grep -ioE "HDMI-[0-9]+|DP-1" | uniq)
 internal_monitor=$(xrandr --listmonitors | grep -ioE "DP-2" | uniq)
 
-if [ -f ".screenlayout/3monitor.sh" ]; then
+if [ -f ".screenlayout/3monitor.sh" ] && [ "$num_monitors" -eq 3 ]; then
 	./.screenlayout/3monitor.sh
 elif [ -n "$external_monitor" ]; then
-	xrandr --output $external_monitor --primary --mode 2560x1440 --scale 1x1 --dpi 212 --output $internal_monitor --off
+	xrandr --output $external_monitor --mode 2560x1440 --primary --scale 1x1 --dpi 212 --output $internal_monitor --off
 elif [ -n $internal_monitor ]; then
 	xrandr --output $internal_monitor --scale 0.5x0.5
 fi
