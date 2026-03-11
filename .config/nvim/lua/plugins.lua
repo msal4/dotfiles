@@ -16,8 +16,6 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
 	"neovim/nvim-lspconfig",
-	"ellisonleao/gruvbox.nvim",
-	"bluz71/vim-moonfly-colors",
 	"nvim-treesitter/nvim-treesitter",
 	'hrsh7th/nvim-cmp', -- Auto-completion
 	'hrsh7th/cmp-nvim-lsp', -- LSP source for nvim-cmp
