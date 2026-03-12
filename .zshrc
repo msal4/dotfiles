@@ -21,3 +21,5 @@ export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 export HISTFILE=~/.zsh_history
+
+alias icat="kitten icat"
