@@ -23,3 +23,5 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export HISTFILE=~/.zsh_history
 
 alias icat="kitten icat"
+
+export GPG_TTY=$(tty)
