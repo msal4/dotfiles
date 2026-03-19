@@ -15,6 +15,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+	-- debug
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"leoluz/nvim-dap-go",
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
+		},
+	},
+
 	"neovim/nvim-lspconfig",
 	"ellisonleao/gruvbox.nvim",
 	"bluz71/vim-moonfly-colors",
@@ -57,14 +67,13 @@ local plugins = {
 				\   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 				]])
 
-			-- Keymaps
-			vim.keymap.set('n', '<leader>ff', ':Files<CR>', { desc = 'Find files' })
-			vim.keymap.set('n', '<leader>fg', ':Rg<CR>', { desc = 'Live grep' })
-			vim.keymap.set('n', '<leader>fb', ':Buffers<CR>', { desc = 'Find buffers' })
-			vim.keymap.set('n', '<leader>fh', ':Helptags<CR>', { desc = 'Help tags' })
-		end,
+				-- Keymaps
+				vim.keymap.set('n', '<leader>ff', ':Files<CR>', { desc = 'Find files' })
+				vim.keymap.set('n', '<leader>fg', ':Rg<CR>', { desc = 'Live grep' })
+				vim.keymap.set('n', '<leader>fb', ':Buffers<CR>', { desc = 'Find buffers' })
+				vim.keymap.set('n', '<leader>fh', ':Helptags<CR>', { desc = 'Help tags' })
+			end,
 	}
-
 }
 
 -- Setup lazy.nvim
@@ -72,3 +81,5 @@ require("lazy").setup({
 	spec = plugins,
 	checker = { enabled = false },
 })
+
+require("dap-go").setup({})
