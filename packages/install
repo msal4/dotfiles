@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# official packages
+sudo pacman -S --needed - < pkglist.txt
+
+# yay
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git /tmp/yay
+cd /tmp/yay && makepkg -si --noconfirm
+yay -S --needed - < aurlist.txt
+
+# systemd services (todo: add missing)
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+systemctl enable --now avahi-daemon.service
+

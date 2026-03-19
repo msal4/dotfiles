@@ -1,0 +1,5 @@
+google-chrome
+neofetch
+python-validity
+yay
+yay-debug

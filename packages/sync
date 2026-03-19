@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+pacman -Qqen > packages/pkglist.txt
+pacman -Qqem > packages/aurlist.txt
