@@ -26,3 +26,5 @@ export HISTFILE=~/.zsh_history
 alias icat="kitten icat"
 
 export GPG_TTY=$(tty)
+
+[[ -f ~/.env_vars ]] && source ~/.env_vars
