@@ -15,16 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-	-- debug
-	{
-		"mfussenegger/nvim-dap",
-		dependencies = {
-			"leoluz/nvim-dap-go",
-			"rcarriga/nvim-dap-ui",
-			"nvim-neotest/nvim-nio",
-		},
-	},
-
 	"neovim/nvim-lspconfig",
 	"nvim-treesitter/nvim-treesitter",
 	'hrsh7th/nvim-cmp', -- Auto-completion
@@ -79,5 +69,3 @@ require("lazy").setup({
 	spec = plugins,
 	checker = { enabled = false },
 })
-
-require("dap-go").setup({})

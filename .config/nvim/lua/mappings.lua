@@ -55,3 +55,22 @@ vim.keymap.set("n", "<leader><space>", ":nohl<CR>")
 
 vim.keymap.set("n", "<leader>xd", ":%!xxd<CR>")
 vim.keymap.set("n", "<leader>xr", ":%!xxd -r<CR>")
+
+vim.keymap.set("n", "<leader>cl", function()
+  local loc = vim.fn.expand("%") .. ":" .. vim.fn.line(".")
+
+  local cmd
+  if vim.fn.has("mac") == 1 then
+    cmd = "pbcopy"
+  elseif vim.fn.executable("xclip") == 1 then
+    cmd = "xclip -selection clipboard"
+  elseif vim.fn.executable("xsel") == 1 then
+    cmd = "xsel --clipboard --input"
+  else
+    vim.notify("No clipboard tool found (pbcopy/xclip/xsel)", vim.log.levels.WARN)
+    return
+  end
+
+  vim.fn.system(cmd, loc)
+  vim.notify("Copied: " .. loc, vim.log.levels.INFO)
+end, { desc = "Copy file:line to clipboard" })
