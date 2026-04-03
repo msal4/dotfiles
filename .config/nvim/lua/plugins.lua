@@ -49,10 +49,18 @@ local plugins = {
 			-- Make it appear at the bottom
 			vim.g.fzf_layout = { down = '~40%' }
 			vim.cmd([[
-			command! -bang -nargs=* Rg
-			\ call fzf#vim#grep(
-				\   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-				\   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+			function! RgLive(query, fullscreen)
+			let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+			let initial_command = printf(command_fmt, shellescape(a:query))
+			let reload_command = printf(command_fmt, '{q}')
+			let spec = fzf#vim#with_preview({
+				\ 'options': ['--phony', '--query', a:query,
+				\             '--bind', 'change:reload:'.reload_command,
+				\             '--delimiter', ':', '--nth', '4..']
+				\ })
+				call fzf#vim#grep(initial_command, 1, spec, a:fullscreen)
+				endfunction
+				command! -nargs=* -bang Rg call RgLive(<q-args>, <bang>0)
 				]])
 
 			-- Keymaps

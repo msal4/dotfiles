@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#  name[, name...](sec) - description
+
+line=$(apropos . | dmenu -l 8 | sed 's/ - .*//')
+[ -z "$line" ] && exit
+
+term=$(echo $line | sed -nE 's/([^,(]+)(, .*)?\(([0-9]+)\)/\3 \1/p')
+
+manp=$(man -w $term)
+
+dir=/tmp/$(echo $term | sed -nE 's/ /_/p')
+mkdir -p $dir
+page_path=$dir/$term.html
+
+mandoc -T html "$manp" > "$page_path"
+
+firefox "$page_path"
