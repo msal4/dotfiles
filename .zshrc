@@ -19,9 +19,12 @@ export PATH=~/.node_modules/bin:$PATH
 export PATH=~/go/bin:$PATH
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 export HISTFILE=~/.zsh_history
 
 alias icat="kitten icat"
 
 export GPG_TTY=$(tty)
+
+[[ -f ~/.env_vars ]] && source ~/.env_vars

@@ -63,14 +63,13 @@ local plugins = {
 				command! -nargs=* -bang Rg call RgLive(<q-args>, <bang>0)
 				]])
 
-			-- Keymaps
-			vim.keymap.set('n', '<leader>ff', ':Files<CR>', { desc = 'Find files' })
-			vim.keymap.set('n', '<leader>fg', ':Rg<CR>', { desc = 'Live grep' })
-			vim.keymap.set('n', '<leader>fb', ':Buffers<CR>', { desc = 'Find buffers' })
-			vim.keymap.set('n', '<leader>fh', ':Helptags<CR>', { desc = 'Help tags' })
-		end,
+				-- Keymaps
+				vim.keymap.set('n', '<leader>ff', ':Files<CR>', { desc = 'Find files' })
+				vim.keymap.set('n', '<leader>fg', ':Rg<CR>', { desc = 'Live grep' })
+				vim.keymap.set('n', '<leader>fb', ':Buffers<CR>', { desc = 'Find buffers' })
+				vim.keymap.set('n', '<leader>fh', ':Helptags<CR>', { desc = 'Help tags' })
+			end,
 	}
-
 }
 
 -- Setup lazy.nvim
