@@ -11,5 +11,5 @@
     ```
 - Link dotfiles
     ```bash
-     ./setup
+     ./setup # -f to overwrite any existing dot files if they exist
     ```
