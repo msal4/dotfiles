@@ -22,6 +22,9 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 
 export HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=50000
+setopt inc_append_history
 
 alias icat="kitten icat"
 
