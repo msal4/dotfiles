@@ -22,8 +22,8 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
 
 export HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=50000
+HISTSIZE=500000
+SAVEHIST=500000
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
 setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
