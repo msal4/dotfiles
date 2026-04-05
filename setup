@@ -7,10 +7,11 @@ git config --global user.name "Salman Sarray"
 git config --global user.email "salman@sarray.de"
 git config --global init.defaultBranch main
 git config --global pull.rebase false
-echo "[  git   ] configured."
+echo "[...git..] configured."
 
+config="$HOME/.config"
 
-paths=( "$HOME/.config/nvim" "$HOME/.config/neomutt" "$HOME/.config/ghostty" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" "$HOME/.local/bin" "$HOME/.XCompose" "$HOME/.mbsyncrc" )
+paths=( "$config/nvim" "$config/neomutt" "$config/ghostty" "$config/newsraft" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" "$HOME/.local/bin" "$HOME/.XCompose" "$HOME/.mbsyncrc" )
 force=0
 
 usage() {
