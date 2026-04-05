@@ -4,6 +4,7 @@ RPROMPT='%(?.%F{green}.%F{red})%(?..[%?]) %T%f'
 bindkey -v
 
 alias vim=nvim
+alias mutt=neomutt
 
 bindkey fd vi-cmd-mode
 

@@ -65,6 +65,8 @@ export XCOMPOSEFILE=$HOME/.XCompose
 
 setxkbmap -option compose:lwin,compose:ralt
 
+gpg -q --decrypt ~/.mutt/icloud-pass.ggp
+
 dbus-update-activation-environment --all
 
 dbus-launch ssh-agent dwm

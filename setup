@@ -1,8 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # -f is set then overwrite existing files
 
-paths=( "$HOME/.config/nvim" "$HOME/.config/ghostty" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" "$HOME/.local/bin" "$HOME/.XCompose" )
+git config --global core.editor "nvim"
+git config --global user.name "Salman Sarray"
+git config --global user.email "salman@sarray.de"
+git config --global init.defaultBranch main
+git config --global pull.rebase false
+echo "[  git   ] configured."
+
+
+paths=( "$HOME/.config/nvim" "$HOME/.config/neomutt" "$HOME/.config/ghostty" "$HOME/.tmux.conf" "$HOME/.zshrc" "$HOME/.xinitrc" "$HOME/.local/bin" "$HOME/.XCompose" "$HOME/.mbsyncrc" )
 force=0
 
 usage() {
@@ -49,11 +57,4 @@ if [ $path_exists -eq 1 ]; then
 else
 	echo "[dotfiles] files linked."
 fi
-
-git config --global core.editor "nvim"
-git config --global user.name "Salman Sarray"
-git config --global user.email "msal4@outlook.com"
-git config --global init.defaultBranch main
-git config --global pull.rebase false
-echo "[git] configured."
 

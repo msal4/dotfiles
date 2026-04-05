@@ -1,0 +1,26 @@
+set from = "salman@sarray.de"
+set realname = "Salman Sarray"
+
+set sidebar_visible
+set sidebar_format = "%B%<F? [%F]>%* %<N?%N/>%S"
+set mail_check_stats
+
+set folder = "~/Mail/iCloud"
+set mbox_type = Maildir
+set spoolfile = "+Inbox"
+set postponed = "+Drafts"
+set record = "+Sent Messages"
+set trash = "+Deleted Messages"
+
+set smtp_url = "smtp://salsarray@icloud.com@smtp.mail.me.com:587"
+set smtp_pass = `gpg -q --decrypt ~/.mutt/icloud-pass.gpg`
+set ssl_starttls = yes
+set ssl_force_tls = yes
+
+set header_cache    = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+set sort = threads
+set sort_aux = reverse-last-date-received
+

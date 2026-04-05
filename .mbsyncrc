@@ -1,0 +1,24 @@
+IMAPAccount icloud
+Host imap.mail.me.com
+Port 993
+User salsarray@icloud.com
+PassCmd "gpg -q --decrypt ~/.mutt/icloud-pass.ggp"
+TLSType IMAPS
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+Path ~/Mail/iCloud/
+Inbox ~/Mail/iCloud/Inbox
+Trash ~/Mail/iCloud/Deleted\ Messages
+SubFolders Verbatim
+
+Channel icloud
+Far :icloud-remote:
+Near :icloud-local:
+Patterns *
+Create Both
+Expunge Both
+SyncState *
+Sync Pull
