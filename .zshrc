@@ -3,7 +3,11 @@ RPROMPT='%(?.%F{green}.%F{red})%(?..[%?]) %T%f'
 
 bindkey -v
 
-alias vim=nvim
+# set default editor
+export EDITOR=vi
+command -v nvim &>/dev/null && export EDITOR=nvim
+
+alias vim=$EDITOR
 alias mutt=neomutt
 
 bindkey fd vi-cmd-mode

@@ -6,6 +6,7 @@ set sidebar_format = "%B%<F? [%F]>%* %<N?%N/>%S"
 set mail_check_stats
 
 set folder = "~/Mail/iCloud"
+mailboxes =Inbox =FreeBSD =Deleted\ Messages
 set mbox_type = Maildir
 set spoolfile = "+Inbox"
 set postponed = "+Drafts"
@@ -13,7 +14,7 @@ set record = "+Sent Messages"
 set trash = "+Deleted Messages"
 
 set smtp_url = "smtp://salsarray@icloud.com@smtp.mail.me.com:587"
-set smtp_pass = `gpg -q --decrypt ~/.mutt/icloud-pass.gpg`
+set smtp_pass = `gpg -q --decrypt ~/.mutt/icloud-pass.ggp`
 set ssl_starttls = yes
 set ssl_force_tls = yes
 

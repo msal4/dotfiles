@@ -46,6 +46,8 @@ fi
 xset dpms 600 900 1200
 xset s 600
 
+gpg -q --decrypt ~/.mutt/icloud-pass.ggp
+
 dwmstat > ~/.dwmstat.log &
 
 external_monitor=$(xrandr --listmonitors | grep -ioE "HDMI-[0-9]+|DP-1" | uniq)
@@ -64,8 +66,6 @@ feh --bg-fill ~/Pictures/background.jpg &
 export XCOMPOSEFILE=$HOME/.XCompose
 
 setxkbmap -option compose:lwin,compose:ralt
-
-gpg -q --decrypt ~/.mutt/icloud-pass.ggp
 
 dbus-update-activation-environment --all
 
